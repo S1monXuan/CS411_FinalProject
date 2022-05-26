@@ -1,0 +1,29 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    HomePage List
+{% endblock %}
+
+{% block content %}
+    <h2>Class Ranking</h2>
+    <p>CS course and instructor info</p>
+    <ul>
+        {% for key, value in selectCourseId.items %}
+            <li>
+                <a href=""> Course: {{ key }}  Instructor: {{ value }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no course available.</em></li>
+        {% endfor %}
+    </ul>
+        <p>Courses rate above 4</p>
+    <ul>
+        {% for key, value in courseAbove4.items %}
+            <li>
+                <a href=""> Course Name: {{ key }} Average Score: {{ value }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no course available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

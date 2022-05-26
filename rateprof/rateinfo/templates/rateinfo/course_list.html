@@ -1,0 +1,29 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Course List
+{% endblock %}
+
+{% block content %}
+    <h2>Course List</h2>
+    <div>
+        <h3>Search For Class</h3>
+        <form method="get">
+            <input type="text" name="q" class="form-control" placeholder="Input ClassName">
+            <button type="submit">Search Course</button>
+        </form>
+    </div>
+    <div>
+{#    {% url 'rateinfo_course_create_urlpattern' %}#}
+        <a href = "{% url 'rateinfo_course_create_urlpattern' %}">Add Course</a>
+    </div>
+    <ul>
+        {% for course in course_list %}
+            <li>
+                <a href="{{ course.get_absolute_url }}"> {{ course }} </a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no course available.</em></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

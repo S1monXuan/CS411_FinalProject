@@ -1,0 +1,26 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Error Deleting Course
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>Error Deleting Course</h2>
+        <p>
+            You may not delete Course {{ course }}.  This
+            course is currently assigned to the following
+            comments:
+        </p>
+
+        <ul>
+            {% for comment in comments %}
+            <li><a href="{{ c.get_absolute_url }}">{{ comment }}</a></li>
+            {%  endfor %}
+        </ul>
+
+        <p>
+            Return to <a href="{% url 'rateinfo_course_list_urlpattern' %}">Course List</a>.
+        </p>
+    </div>
+{% endblock %}

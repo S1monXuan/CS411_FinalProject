@@ -1,0 +1,21 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Create Course
+{% endblock %}
+
+{% block content %}
+    <form
+        action="{% url 'rateinfo_course_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+{#        <p>New CourseName - <input type="text" class="form-control" name="n" placeholder="input new CourseName"/></p>#}
+{#        <br>#}
+{#        <p>Department - <input type="text" class="form-control" name="d" placeholder="input Department"/></p>#}
+{#        <br>#}
+{#        <p>Instructor - <input type="text" class="form-control" name="i" placeholder="input Instructor"/></p>#}
+{#        <br>#}
+        <button type="submit">Create Course</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'rateinfo/base.html' %}
+
+{% block title %}
+    Course - {{ course.Course_Name }}
+{% endblock %}
+
+{% block content %}
+    <h2>{{ course.Course_Name }}</h2>
+    <ul>
+        <li>
+            <a href = "{{ course.get_update_url }}">Edit Course</a>
+        </li>
+        <li>
+            <a href = "{{ course.get_delete_url }}">Delete Course</a>
+        </li>
+    </ul>
+    <section>
+        <table>
+            <tr>
+                <th>CourseName:</th>
+                <td><a href="{{ course.get_absolute_url }}">{{ course.Course_Name }}</a></td>
+            </tr>
+            <tr>
+                <th>Department:</th>
+                <td>{{ course.Course_Department }}</td>
+            </tr>
+            <tr>
+                <th>Instructor:</th>
+                <td><a href="{{ course.Course_Instructor_ID.get_absolute_url }}">{{ course.Course_Instructor_ID.Instructor_Name }}</a></td>
+            </tr>
+        </table>
+
+    </section>
+
+    <section>
+        <h3>Comments</h3>
+        <ul>
+            {% for Comment in comment_list %}
+                <li>
+                    <p>Score: {{ Comment.Comment_Score }}</p>
+                    <a href="{{ Comment.get_absolute_url }}">{{ Comment.Comment_Text }}</a>
+                </li>
+            {% empty %}
+                <li><em>There are currently no comments for this course.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
